@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ENCODER</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<script src="scroll.js"></script>
+    </head>
+
+<body>
+	<div class="hero">
+	  <nav>
+		<a href="index.html"><img src=".\ENCODER-logos_white.png" class="logo" ></a>
+		<ul>
+			<li><a href="./index.html">Home</a></li>
+			<li><a href="#explain">Information</a></li>			
+			<li><a href="#service">Conversion</a></li>
+			{% comment %} <li><a href="#footer">Contact US</a></li> {% endcomment %}
+		</ul>
+	  </nav>
+	  <div class="content">
+		<h4 class="animate__animated animate__fadeInUp animate__slow">Hello, This Is </h4>
+		<h1 class="animate__animated animate__lightSpeedInRight animate__slow">Infix <span> To Prefix</span> <br> Converter</h1>
+	  </div>
+	</div>
+	<section class="explain" id="explain">
+
+		<div class="box1">
+			<div class="card1">
+	    			<u style="font-size: 30px;"><b><span>INFIX EXPRESSION</span> </b></u> <br> <br>
+					An Expression Is Called The Infix Expression If The Operator Appears In Between The Operands In The Expression. 
+		            Simply Of The Form (Operand1 Operator Operand2). <br>
+                    Example : (A+B)*(C-D)<br> <br> <br>
+		            <u style="font-size: 30px;"><b><span>PREFIX EXPRESSION</span></b></u> <br> <br>
+					An Expression Is Called The Prefix Expression If The Operator Appears In The Expression Before The Operands. 
+					Simply Of The Form (Operator Operand1 Operand2). <br>
+					Example : *+AB-CD <br> <br>
+		    </div>
+			<div class="card2">
+                <ul>
+                    <li id="option"><a href="./in-post.html">Infix <span>to Postfix</span></a></li> <br>
+                    <li id="option"><a href="./pre-in.html">Prefix <span>to Infix</span></a></li> <br>
+					<li id="option"><a href="./pre-post.html">Prefix <span>to Postfix</span></a></li> <br>
+                    <li id="option"><a href="./post-in.html">Postfix <span>to Infix</span></a></li> <br>
+                    <li id="option"><a href="./post-pre.html">Postfix <span>to Prefix</span></a></li> <br>
+                </ul>
+		    </div>
+	    </div>
+		<div class="box1">
+			<div class="card1">
+				<u style="font-size: 30px;"><b> <span>ALGORITHM TO CONVERT INFIX TO PREFIX EXPRESSION...</span> </b></u> <br><br>
+                The Idea Is to use one stack for storing operators and other to store operands.
+				<br>The Following Algorithm Converts Infix To Prefix. <br>
+				<ul>
+					<li>Traverse The Infix Expression And Check If Given Character Is An Operator Or An Operand.</li>
+					<li>If It Is An Operand, Then Push It Into Operand Stack.</li>
+					<li>If It Is An Operator, Then Check If Priority Of Current Operator Is Greater Than Or Less Than Or Equal To The 
+						Operator At Top Of The Stack. </li>
+					<li>If Priority Is Greater, Then Push Operator Into Operator Stack. </li>
+					<li>Otherwise Pop Two Operands From Operand Stack, Pop Operator From Operator Stack And Push String Operator + Operand 2 + Operand 1 
+						Into Operand Stack. </li>
+					<li>Keep Popping From Both Stacks And Pushing Result Into Operand Stack Until Priority Of Current Operator Is Less Than Or Equal To 
+						Operator At Top Of The Operator Stack.</li>
+					<li>If Current Character Is ‘(‘, Then Push It Into Operator Stack.</li>
+					<li>If Current Character Is ‘)’, Then Check If Top Of Operator Stack Is Opening Bracket Or Not. If Not Pop Two Operands From Operand 
+						Stack, Pop Operator From Operator Stack And Push String Operator + Operand 2 + Operand 1 Into Operand Stack. </li>
+					<li>Keep Popping From Both Stacks And Pushing Result Into Operand Stack Until Top Of Operator Stack Is An Opening Bracket.</li>
+					<li>The Final Prefix Expression Is Present At Top Of Operand Stack.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="conversion" id="conversion">
+   		<h1>Infix to Prefix Converter</h1>
+    	<form id="converter-form">
+        	<label for="infix-expression"><span>Enter Infix Expression</span>:</label>
+        	<input type="text" id="infix-expression" name="infix-expression" required>
+        	<button type="submit">Convert</button>
+    	</form>
+		<br><br>
+    <div id="result"></div>
+
+	</section>
+	{% comment %} <!--footer start-->
+	<footer id="footer">
+		<p>PRACHI NAGDEVE</p>
+		<p>These Are My Social Media Handles. Follow These To Contact Us.</p>
+		<div class="social">
+			<a href="https://en-gb.facebook.com/people/Prachi-Nagdeve/100082832522391/"><i class="fa-brands fa-facebook"></i></a>
+			<a href="https://www.instagram.com/simply__prachi?r=nametag"><i class="fa-brands fa-instagram"></i></a>
+			<a href="https://github.com/Prachi-Nagdeve"><i class="fa-brands fa-github"></i></a>
+		</div>
+		<p class="end">CopyRight By Prachi Nagdeve</p>
+		<div id="progress">
+			<span id="progress-value">&#8686;</span>
+		</div>
+	</footer> {% endcomment %}
+</body>
+
+
+
+
+
+<script>
+// Function to check if a character is an operator
+function isOperator(char) {
+    return char === '+' || char === '-' || char === '*' || char === '/';
+}
+
+// Function to get precedence of an operator
+function getPrecedence(operator) {
+    if (operator === '+' || operator === '-') return 1;
+    if (operator === '*' || operator === '/') return 2;
+    return 0;
+}
+
+// Function to convert infix expression to prefix expression
+function infixToPrefix(infix) {
+    let postfix = [];
+    let stack = [];
+
+    for (let char of infix) {
+        if (char.match(/[a-zA-Z0-9]/)) {
+            postfix.push(char);
+        } else if (char === '(') {
+            stack.push(char);
+        } else if (char === ')') {
+            while (stack.length && stack[stack.length - 1] !== '(') {
+                postfix.push(stack.pop());
+            }
+            stack.pop(); // Remove '('
+        } else if (isOperator(char)) {
+            while (
+                stack.length &&
+                getPrecedence(stack[stack.length - 1]) >= getPrecedence(char)
+            ) {
+                postfix.push(stack.pop());
+            }
+            stack.push(char);
+        }
+    }
+
+    while (stack.length) {
+        postfix.push(stack.pop());
+    }
+
+    return postfix.join('');
+}
+
+// Handle form submission
+document.getElementById('converter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const infixExpression = document.getElementById('infix-expression').value;
+    const prefixExpression = infixToPrefix(infixExpression);
+    
+    document.getElementById('result').textContent = `Prefix Expression: ${prefixExpression}`;
+});
+
+</script>
+</html>

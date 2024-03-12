@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ENCODER</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<script src="scroll.js"></script>
+    </head>
+
+<body>
+	<div class="hero">
+	  <nav>
+		<a href="index.html"><img src=".\ENCODER-logos_white.png" class="logo" ></a>
+		<ul>
+			<li><a href="./index.html">Home</a></li>
+			<li><a href="#explain">Information</a></li>
+			<li><a href="#service">Conversion</a></li>
+			{% comment %} <li><a href="#footer">Contact US</a></li> {% endcomment %}
+		</ul>
+	  </nav>
+	  <div class="content">
+		<h4 class="animate__animated animate__fadeInUp animate__slow">Hello, This Is </h4>
+		<h1 class="animate__animated animate__lightSpeedInRight animate__slow">Prefix <span> To Infix</span> <br> Converter</h1>
+	  </div>
+	</div>
+	<section class="explain" id="explain">
+		<div class="box1">
+			<div class="card1">
+	    			<u style="font-size: 30px;"><b><span>PREFIX EXPRESSION</span> </b></u> <br> <br>
+					An Expression Is Called The Prefix Expression If The Operator Appears In The Expression Before The Operands. 
+					Simply Of The Form (Operator Operand1 Operand2). <br>
+					Example : *+AB-CD <br> <br> <br>
+		            <u style="font-size: 30px;"><b><span>INFIX EXPRESSION</span></b></u> <br> <br>
+					An Expression Is Called The Infix Expression If The Operator Appears In Between The Operands In The Expression. 
+		            Simply Of The Form (Operand1 Operator Operand2). <br>
+                    Example : (A+B)*(C-D)<br> <br> 
+		    </div>
+			<div class="card2">
+                <ul>
+                    <li id="option"><a href="./in-pre.html">Infix <span>to Prefix</span></a></li> <br>
+                    <li id="option"><a href="./in-post.html">Infix <span>to Postfix</span></a></li> <br>
+					<li id="option"><a href="./pre-post.html">Prefix <span>to Postfix</span></a></li> <br>
+                    <li id="option"><a href="./post-in.html">Postfix <span>to Infix</span></a></li> <br>
+                    <li id="option"><a href="./post-pre.html">Postfix <span>to Prefix</span></a></li> <br>
+                </ul>
+		    </div>
+	    </div>
+		<div class="box1">
+			<div class="card1">
+				<u style="font-size: 30px;"><b> <span>ALGORITHM TO CONVERT PREFIX TO INFIX EXPRESSION...</span> </b></u> <br><br>
+				<br>The Following Algorithm Converts Prefix To Infix. <br>
+				<ul>
+                    <li>Read The Prefix Expression In Reverse Order (From Right To Left).</li>
+                    <li>If The Symbol Is An Operand, Then Push It Onto The Stack.</li>
+                    <li>If The Symbol Is An Operator, Then Pop Two Operands From The Stack.</li>
+                    <li>Create A String By Concatenating The Two Operands And The Operator Between Them. <br>
+                    String = (Operand1 + Operator + Operand2)</li>
+                    <li>And Push The Resultant String Back To Stack.</li>
+                    <li>Repeat The Above Steps Until The End Of Prefix Expression.</li>
+                    <li>At The End Stack Will Have Only 1 String I.E Resultant String.</li>
+                </ul>
+			</div>
+		</div>
+	</section>
+	<section class="conversion" id="conversion">
+		<h1>Prefix to Infix Converter</h1>
+	 <form id="converter-form">
+		 <label for="infix-expression"><span>Enter Prefix Expression</span>:</label>
+		 <input type="text" id="infix-expression" name="infix-expression" required>
+		 <button type="submit">Convert</button>
+	 </form>
+	 <br><br>
+ <div id="result"></div>
+
+ </section>
+ {% comment %} <!--footer start-->
+	<footer id="footer">
+		<p>PRACHI NAGDEVE</p>
+		<p>These Are My Social Media Handles. Follow These To Contact Us.</p>
+		<div class="social">
+			<a href="https://en-gb.facebook.com/people/Prachi-Nagdeve/100082832522391/"><i class="fa-brands fa-facebook"></i></a>
+			<a href="https://www.instagram.com/simply__prachi?r=nametag"><i class="fa-brands fa-instagram"></i></a>
+			<a href="https://github.com/Prachi-Nagdeve"><i class="fa-brands fa-github"></i></a>
+		</div>
+		<p class="end">CopyRight By Prachi Nagdeve</p>
+		<div id="progress">
+			<span id="progress-value">&#8686;</span>
+		</div>
+	</footer> {% endcomment %}
+</body>
+<script>
+	// Function to check if a character is an operator
+function isOperator(char) {
+    return char === '+' || char === '-' || char === '*' || char === '/';
+}
+
+// Function to convert prefix expression to approximate infix expression
+function prefixToInfix(prefix) {
+    const stack = [];
+
+    for (let i = prefix.length - 1; i >= 0; i--) {
+        const char = prefix[i];
+        if (isOperator(char)) {
+            const operand1 = stack.pop();
+            const operand2 = stack.pop();
+            const infixExpr = `(${operand1}${char}${operand2})`;
+            stack.push(infixExpr);
+        } else {
+            stack.push(char);
+        }
+    }
+
+    return stack.pop();
+}
+
+// Handle form submission
+document.getElementById('converter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const prefixExpression = document.getElementById('prefix-expression').value;
+    const infixExpression = prefixToInfix(prefixExpression);
+
+    document.getElementById('result').textContent = `Infix Expression: ${infixExpression}`;
+});
+
+</script>
+</html>

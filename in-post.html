@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ENCODER</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<script src="scroll.js"></script>
+    </head>
+
+<body>
+	<div class="hero">
+	  <nav>
+		<a href="index.html"><img src=".\ENCODER-logos_white.png" class="logo" ></a>
+		<ul>
+			<li><a href="./index.html">Home</a></li>
+			<li><a href="#explain">Information</a></li>
+			<li><a href="#service">Conversion</a></li>
+			{% comment %} <li><a href="#footer">Contact US</a></li> {% endcomment %}
+		</ul>
+	  </nav>
+	  <div class="content">
+		<h4 class="animate__animated animate__fadeInUp animate__slow">Hello, This Is </h4>
+		<h1 class="animate__animated animate__lightSpeedInRight animate__slow">Infix <span> To Postfix</span> <br> Converter</h1>
+	  </div>
+	</div>
+	<section class="explain" id="explain">
+		<div class="box1">
+			<div class="card1">
+	    			<u style="font-size: 30px;"><b><span>INFIX EXPRESSION</span> </b></u> <br> <br>
+					An Expression Is Called The Infix Expression If The Operator Appears In Between The Operands In The Expression. 
+		            Simply Of The Form (Operand1 Operator Operand2). <br>
+                    Example : (A+B)*(C-D)<br> <br> <br>
+		            <u style="font-size: 30px;"><b><span>POSTFIX EXPRESSION</span></b></u> <br> <br>
+					The Expression Of The Form A B Op. When An Operator Is Followed For Every Pair Of Operands. 
+                    Postfix Notation, Also Known As Reverse Polish Notation, Is A Syntax For Mathematical Expressions In Which The 
+		            Mathematical Operator Is Always Placed After The Operands. Though Postfix Expressions Are Easily And Efficiently 
+		            Evaluated By Computers, They Can Be Difficult For Humans To Read. Complex Expressions Using Standard Parenthesized 
+		            Infix Notation Are Often More Readable Than The Corresponding Postfix Expressions. Consequently, We Would Sometimes 
+		            Like To Allow End Users To Work With Infix Notation And Then Convert It To Postfix Notation For Computer Processing. 
+	            	Sometimes, Moreover, Expressions Are Stored Or Generated In Postfix, And We Would Like To Convert Them To Infix For The 
+	            	Purpose Of Reading And Editing. <br>
+	            	Example : AB*C+<br> <br>
+		    </div>
+			<div class="card2">
+                <ul>
+                    <li id="option"><a href="./in-pre.html">Infix <span>to Prefix</span></a></li> <br>
+                    <li id="option"><a href="./pre-in.html">Prefix <span>to Infix</span></a></li> <br>
+					<li id="option"><a href="./pre-post.html">Prefix <span>to Postfix</span></a></li> <br>
+                    <li id="option"><a href="./post-in.html">Postfix <span>to Infix</span></a></li> <br>
+                    <li id="option"><a href="./post-pre.html">Postfix <span>to Prefix</span></a></li> <br>
+                </ul>
+		    </div>
+	    </div>
+		<div class="box1">
+			<div class="card1">
+				<u style="font-size: 30px;"><b> <span>ALGORITHM TO CONVERT INFIX TO POSTFIX EXPRESSION...</span> </b></u> <br><br>
+                In This Case, We Use The Stacks To Convert Infix To Postfix. We Have Operator's Stack, Output's Stack And One Input String. 
+				Operator's Stack Works As FILO(First In Last Out). Output's Stack Works As FIFO (First In First Out).
+				<br>The Following Algorithm Converts Infix To Postfix. <br>
+				<ul>
+			        <li>Scan Input String From Left To Right Character By Character.</li>
+					<li>If The Character Is An Operand, Put It Into Output Stack.</li>
+			    	<li>If The Character Is An Operator And Operator's Stack Is Empty, Push Operator Into Operators' Stack.</li>
+			    	<li>If The Operator's Stack Is Not Empty, There May Be Following Possibilites.</li>
+			    	<li>If The Precedence Of Scanned Operator Is Greater Than The Top Most Operator Of Operator's Stack, Push This Operator Into Operand's Stack.</li>
+			    	<li>If The Precedence Of Scanned Operator Is Less Than Or Equal To The Top Most Operator Of Operator's Stack, Pop The Operators From Operand's stack untill we find a low precedence operator than the scanned character. Never pop out ( '(' ) or ( ')' ) whatever may be the precedence level of scanned character.</li>
+			    	<li>If The Character Is Opening Round Bracket ( '(' ), Push It Into Operator's Stack.</li>
+			        <li>If The Character Is Closing Round Bracket ( ')' ), Pop Out Operators From Operator's Stack Untill We Find An Opening Bracket ('(' ).</li>
+			    	<li>Now Pop Out All The Remaining Operators From The Operator's Stack And Push Into Output Stack.</li>
+			</ul>
+			</div>
+		</div>
+	</section>
+	<section class="conversion" id="conversion">
+		<h1>Infix to Postfix Converter</h1>
+	 <form id="converter-form">
+		 <label for="infix-expression"><span>Enter Infix Expression</span>:</label>
+		 <input type="text" id="infix-expression" name="infix-expression" required>
+		 <button type="submit">Convert</button>
+	 </form>
+	 <br><br>
+ <div id="result"></div>
+
+ </section>
+{% comment %} 
+	<!--footer start-->
+	<footer id="footer">
+		<p>PRACHI NAGDEVE</p>
+		<p>These Are My Social Media Handles. Follow These To Contact Us.</p>
+		<div class="social">
+			<a href="https://en-gb.facebook.com/people/Prachi-Nagdeve/100082832522391/"><i class="fa-brands fa-facebook"></i></a>
+			<a href="https://www.instagram.com/simply__prachi?r=nametag"><i class="fa-brands fa-instagram"></i></a>
+			<a href="https://github.com/Prachi-Nagdeve"><i class="fa-brands fa-github"></i></a>
+		</div>
+		<p class="end">CopyRight By Prachi Nagdeve</p>
+		<div id="progress">
+			<span id="progress-value">&#8686;</span>
+		</div>
+	</footer> {% endcomment %}
+</body>
+
+
+
+
+
+<script>
+// Function to check if a character is an operator
+function isOperator(char) {
+    return char === '+' || char === '-' || char === '*' || char === '/';
+}
+
+// Function to get precedence of an operator
+function getPrecedence(operator) {
+    if (operator === '+' || operator === '-') return 1;
+    if (operator === '*' || operator === '/') return 2;
+    return 0;
+}
+
+// Function to convert infix expression to postfix expression
+function infixToPostfix(infix) {
+    let postfix = [];
+    let stack = [];
+
+    for (let char of infix) {
+        if (char.match(/[a-zA-Z0-9]/)) {
+            postfix.push(char);
+        } else if (char === '(') {
+            stack.push(char);
+        } else if (char === ')') {
+            while (stack.length && stack[stack.length - 1] !== '(') {
+                postfix.push(stack.pop());
+            }
+            stack.pop(); // Remove '('
+        } else if (isOperator(char)) {
+            while (
+                stack.length &&
+                getPrecedence(stack[stack.length - 1]) >= getPrecedence(char)
+            ) {
+                postfix.push(stack.pop());
+            }
+            stack.push(char);
+        }
+    }
+
+    while (stack.length) {
+        postfix.push(stack.pop());
+    }
+
+    return postfix.join('');
+}
+
+// Handle form submission
+document.getElementById('converter-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const infixExpression = document.getElementById('infix-expression').value;
+    const postfixExpression = infixToPostfix(infixExpression);
+    
+    document.getElementById('result').textContent = `Postfix Expression: ${postfixExpression}`;
+});
+</script>
+</html>
